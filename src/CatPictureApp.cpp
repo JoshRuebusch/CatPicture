@@ -11,10 +11,18 @@ class CatPictureApp : public AppBasic {
 	void mouseDown( MouseEvent event );	
 	void update();
 	void draw();
+
+private:
+	float colorR;
+	float colorG;
+	float colorB;
 };
 
 void CatPictureApp::setup()
 {
+	colorR = 0.0f;
+	colorG = 0.0f;
+	colorB = 0.0f;
 }
 
 void CatPictureApp::mouseDown( MouseEvent event )
@@ -23,12 +31,15 @@ void CatPictureApp::mouseDown( MouseEvent event )
 
 void CatPictureApp::update()
 {
+	colorR = colorR + 0.01f;
+	if (colorR > 1.0f)
+		colorR = 0.0f;
 }
 
 void CatPictureApp::draw()
 {
 	// clear out the window with black
-	gl::clear( Color( 0, 0, 0 ) ); 
+	gl::clear( Color( colorR, colorG, colorB ) ); 
 }
 
 CINDER_APP_BASIC( CatPictureApp, RendererGl )
