@@ -16,6 +16,7 @@ private:
 	float colorR;
 	float colorG;
 	float colorB;
+	int selector;
 };
 
 void CatPictureApp::setup()
@@ -23,6 +24,7 @@ void CatPictureApp::setup()
 	colorR = 0.0f;
 	colorG = 0.0f;
 	colorB = 0.0f;
+	selector = 0;
 }
 
 void CatPictureApp::mouseDown( MouseEvent event )
@@ -31,9 +33,19 @@ void CatPictureApp::mouseDown( MouseEvent event )
 
 void CatPictureApp::update()
 {
-	colorR = colorR + 0.01f;
+	selector = rand() % 3 + 1;
+	if (selector == 1)
+		colorR = colorR + 0.01f;
+	else if (selector == 2)
+		colorG = colorG + 0.01f;
+	else 
+		colorB = colorB +0.01f;
 	if (colorR > 1.0f)
 		colorR = 0.0f;
+	if (colorG > 1.0f)
+		colorG = 0.0f;
+	if (colorB > 1.0f)
+		colorB = 0.0f;
 }
 
 void CatPictureApp::draw()
